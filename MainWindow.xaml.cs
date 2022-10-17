@@ -1,4 +1,5 @@
-﻿using System;
+﻿using paint_project;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,17 +43,24 @@ namespace zad1___paint
         {
             chosenTool = 2;
         }
-        private void load_p3(object sender, RoutedEventArgs e)
+        private void LoadImage(object sender, RoutedEventArgs e)
         {
-            chosenTool = 3;
+            try
+            {
+                FileReader reader = new FileReader();
+                BitmapImage image = reader.ReadImageFIle();
+                ImageDisplay imageWindow = new ImageDisplay(image);
+                imageWindow.Show();
+            }
+            catch(Exception ex)
+            {
+                ErrorDisplay error = new ErrorDisplay(ex.Message);
+                error.Show();
+            }
         }
-        private void load_p6(object sender, RoutedEventArgs e)
+        private void SaveAsJPGFile(object sender, RoutedEventArgs e)
         {
-            chosenTool = 4;
-        }
-        private void load_jpg(object sender, RoutedEventArgs e)
-        {
-            chosenTool = 5;
+            chosenTool = 6;
         }
         private object? figure;
 

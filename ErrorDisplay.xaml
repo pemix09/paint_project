@@ -1,0 +1,12 @@
+﻿<Window x:Class="paint_project.ErrorDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:paint_project"
+        mc:Ignorable="d"
+        Title="ErrorDisplay" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" FontSize="50" Height="307" Margin="64,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="698"><Run Language="pl-pl" Text="Given file is not supported!"/></TextBlock>
+    </Grid>
+</Window>

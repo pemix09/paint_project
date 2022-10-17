@@ -1,0 +1,12 @@
+﻿<Window x:Class="paint_project.ImageDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:paint_project"
+        mc:Ignorable="d"
+        Title="ImageDisplay" Height="450" Width="800">
+    <Grid>
+        <Image Name="ImageViewer" HorizontalAlignment="center" Height="450" VerticalAlignment="center" Width="600" Grid.Column="1"/>
+    </Grid>
+</Window>

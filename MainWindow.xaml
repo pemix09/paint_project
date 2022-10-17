@@ -10,13 +10,12 @@
         >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="#323336" Panel.ZIndex="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -36,18 +35,14 @@
                     Grid.Column="2"
                     Style="{StaticResource MenuButton}"
                     Click="line_Click">Line</Button>
-            <Button Name="loadP3"
+            <Button Name="load_image"
                     Grid.Column="3"
                     Style="{StaticResource MenuButton}"
-                    Click="load_p3">Load P3</Button>
-            <Button Name="loadP6"
-                    Grid.Column="4"
+                    Click="LoadImage">Load image</Button>
+            <Button Name="save_jpg"
+                    Grid.Column="6"
                     Style="{StaticResource MenuButton}"
-                    Click="load_p6">Load P6</Button>
-            <Button Name="load_JPG"
-                    Grid.Column="5"
-                    Style="{StaticResource MenuButton}"
-                    Click="load_jpg">Load JPG</Button>
+                    Click="SaveAsJPGFile">Save as JPG</Button>
         </Grid>
         <Canvas Name="canvasBoard" 
                 Grid.Row="1" 
