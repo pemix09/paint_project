@@ -287,7 +287,7 @@ namespace paint_project
                     bitmap.SetPixel(i, j, System.Drawing.Color.FromArgb((byte)(255 - i), 0, (byte)(255 - j)));
                 }
 
-            BitmapImage image = ConvertBitmapToBitmapImage(bitmap);
+            BitmapImage image = BitmapConverter.Bitmap2BitmapImage(bitmap);
             ImageBrush brush = new ImageBrush(image);
             FirstWall.Material = new DiffuseMaterial(brush);
             FirstWall.BackMaterial = new DiffuseMaterial(brush);
@@ -299,7 +299,7 @@ namespace paint_project
                     bitmap.SetPixel(i, j, System.Drawing.Color.FromArgb((byte)(255 - i), (byte)(255 - j), 0));
                 }
 
-            image = ConvertBitmapToBitmapImage(bitmap);
+            image = BitmapConverter.Bitmap2BitmapImage(bitmap);
             brush = new ImageBrush(image);
             SecondWall.Material = new DiffuseMaterial(brush);
             SecondWall.BackMaterial = new DiffuseMaterial(brush);
@@ -311,7 +311,7 @@ namespace paint_project
                     bitmap.SetPixel(i, j, System.Drawing.Color.FromArgb(0, j, i));
                 }
 
-            image = ConvertBitmapToBitmapImage(bitmap);
+            image = BitmapConverter.Bitmap2BitmapImage(bitmap);
             brush = new ImageBrush(image);
             DownWall.Material = new DiffuseMaterial(brush);
             DownWall.BackMaterial = new DiffuseMaterial(brush);
@@ -323,7 +323,7 @@ namespace paint_project
                     bitmap.SetPixel(i, j, System.Drawing.Color.FromArgb(255, j, i));
                 }
 
-            image = ConvertBitmapToBitmapImage(bitmap);
+            image = BitmapConverter.Bitmap2BitmapImage(bitmap);
             brush = new ImageBrush(image);
             UpWall.Material = new DiffuseMaterial(brush);
             UpWall.BackMaterial = new DiffuseMaterial(brush);
@@ -335,7 +335,7 @@ namespace paint_project
                     bitmap.SetPixel(i, j, System.Drawing.Color.FromArgb(255 - i, 255, 255 - j));
                 }
 
-            image = ConvertBitmapToBitmapImage(bitmap);
+            image = BitmapConverter.Bitmap2BitmapImage(bitmap);
             brush = new ImageBrush(image);
             ThirdWall.Material = new DiffuseMaterial(brush);
             ThirdWall.BackMaterial = new DiffuseMaterial(brush);
@@ -347,28 +347,11 @@ namespace paint_project
                     bitmap.SetPixel(i, j, System.Drawing.Color.FromArgb(i, j, 255));
                 }
 
-            image = ConvertBitmapToBitmapImage(bitmap);
+            image = BitmapConverter.Bitmap2BitmapImage(bitmap);
             brush = new ImageBrush(image);
             FourthWall.Material = new DiffuseMaterial(brush);
             FourthWall.BackMaterial = new DiffuseMaterial(brush);
 
-        }
-
-        private BitmapImage ConvertBitmapToBitmapImage(Bitmap bitmap)
-        {
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapImage = new BitmapImage();
-
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = memory;
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.EndInit();
-
-                return bitmapImage;
-            }
         }
     }
 }
