@@ -21,6 +21,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Button Name="drawingTool"
@@ -40,9 +41,13 @@
                     Style="{StaticResource MenuButton}"
                     Click="LoadImage">Load image</Button>
             <Button Name="save_jpg"
-                    Grid.Column="6"
+                    Grid.Column="4"
                     Style="{StaticResource MenuButton}"
                     Click="SaveAsJPGFile">Save as JPG</Button>
+            <Button Name="rgb_cube"
+                    Grid.Column="5"
+                    Style="{StaticResource MenuButton}"
+                    Click="LunchRGBCube">RGB Cube</Button>
         </Grid>
         <Canvas Name="canvasBoard" 
                 Grid.Row="1" 

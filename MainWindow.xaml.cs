@@ -43,6 +43,19 @@ namespace zad1___paint
         {
             chosenTool = 2;
         }
+        private void LunchRGBCube(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RGB_Cube cube = new RGB_Cube();
+                cube.Show();
+            }
+            catch (Exception ex)
+            {
+                ErrorDisplay error = new ErrorDisplay(ex.Message);
+                error.Show();
+            }
+        }
         private void LoadImage(object sender, RoutedEventArgs e)
         {
             try
