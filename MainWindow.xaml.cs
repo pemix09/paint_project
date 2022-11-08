@@ -56,6 +56,21 @@ namespace zad1___paint
                 error.Show();
             }
         }
+        private void LaunchFilters(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Filters filter = new Filters();
+                filter.Show();
+            }
+            catch (Exception ex)
+            {
+                ErrorDisplay error = new ErrorDisplay(ex.Message);
+                error.Show();
+            }
+        }
+
+
         private void LoadImage(object sender, RoutedEventArgs e)
         {
             try

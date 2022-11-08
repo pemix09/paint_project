@@ -22,6 +22,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Button Name="drawingTool"
@@ -48,6 +49,10 @@
                     Grid.Column="5"
                     Style="{StaticResource MenuButton}"
                     Click="LunchRGBCube">RGB Cube</Button>
+            <Button Name="filters"
+                    Grid.Column="6"
+                    Style="{StaticResource MenuButton}"
+                    Click="LaunchFilters">Filters</Button>
         </Grid>
         <Canvas Name="canvasBoard" 
                 Grid.Row="1" 
