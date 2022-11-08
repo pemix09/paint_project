@@ -72,24 +72,15 @@ namespace paint_project
                     Math.Max((int)(color.B / value), 0)));
         }
 
-        public static Bitmap ChangeBrightness(Bitmap bitmap, double value)
+        public static Bitmap ChangeBrightness(Bitmap bitmap, double valueInProcent)
         {
-            if (value <= 1.0)
-            {
-                return processPixels(bitmap, color =>
+            double value = valueInProcent / 100;
+                
+            return processPixels(bitmap, color =>
                  Color.FromArgb(
                     Math.Min((int)(color.R * value), 255),
                     Math.Min((int)(color.G * value), 255),
                     Math.Min((int)(color.B * value), 255)));
-            }
-            else
-            {
-                return processPixels(bitmap, color =>
-                Color.FromArgb(
-                    Math.Min((int)((255 - color.R) * (value - 1.0) + color.R), 255),
-                    Math.Min((int)((255 - color.G) * (value - 1.0) + color.G), 255),
-                    Math.Min((int)((255 - color.B) * (value - 1.0) + color.B), 255)));
-            }
         }
 
         public static Bitmap ConvertToGrayScaleAverage(Bitmap bitmap)

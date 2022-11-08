@@ -98,15 +98,27 @@ namespace paint_project
         private void Brightness(object sender, RoutedEventArgs e)
         {
             double value;
+
+            if (BrightnessChanging.Text.Contains('.'))
+            {
+                BrightnessChanging.Text = BrightnessChanging.Text.Replace('.', ',');
+            }
+
             if (!double.TryParse(BrightnessChanging.Text, out value))
             {
                 MessageBox.Show("Bad value");
                 BrightnessChanging.Text = "100";
                 return;
             }
+            else if(value < 1 || value > 100)
+            {
+                MessageBox.Show("Value can range only from 1 to 100!");
+                return;
+            }
+            
             BitmapImage image = Orginal.Source as BitmapImage;
             Bitmap bitmap = BitmapConverter2.GetBitmapFromBitmapImage(image);
-            AfterFiltering.Source = ConvertBitmapToBitmapImage(BitmapConverter2.ChangeBrightness(bitmap, value/100));
+            AfterFiltering.Source = ConvertBitmapToBitmapImage(BitmapConverter2.ChangeBrightness(bitmap, value));
         }
 
         private void ConvertToGrayScaleAverage(object sender, RoutedEventArgs e)
