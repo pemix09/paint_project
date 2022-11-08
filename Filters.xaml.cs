@@ -179,7 +179,7 @@ namespace paint_project
         {
             BitmapImage image = Orginal.Source as BitmapImage;
             Bitmap bitmap = BitmapConverter2.GetBitmapFromBitmapImage(image);
-            AfterFiltering.Source = ConvertBitmapToBitmapImage(BitmapConverter2.SobelFilter(bitmap, SobelFilterVariantEnum.XY));
+            AfterFiltering.Source = ConvertBitmapToBitmapImage(BitmapConverter2.SobelFilter(bitmap));
         }
 
         private void HighPassFilter(object sender, RoutedEventArgs e)

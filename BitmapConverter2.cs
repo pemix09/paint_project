@@ -93,6 +93,15 @@ namespace paint_project
 
         }
 
+        /// <summary>
+        ///     Y - birghtness
+        ///     U = CB = blueness of the pixel
+        ///     V = CR = redness of the pixel
+        ///     If there are not that much of red and blue on the picture, it becomes green
+        ///     We use it beacause color information is separated from grey scale information
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
         public static Bitmap ConvertToGrayScaleYUV(Bitmap bitmap)
         {
             return processPixels(bitmap, color =>
@@ -127,6 +136,14 @@ namespace paint_project
             return newBitmap;
         }
 
+        /// <summary>
+        ///     Returns linear value of color, made with mask
+        /// </summary>
+        /// <param name="x">width of the mask</param>
+        /// <param name="y">High of the mask</param>
+        /// <param name="mask">Mask's value</param>
+        /// <param name="colors">Colors of the pixel</param>
+        /// <returns></returns>
         private static Color GetColorValueLinear(int x, int y, double[,] mask, Color[,] colors)
         {
             var R = 0;
@@ -139,6 +156,7 @@ namespace paint_project
                 maskJ = 0;
                 for (int j = y - 1; j <= y + 1; j++)
                 {
+                    //Every color is set accordingly to mask's value
                     R += (int)(colors[i, j].R * mask[maskI, maskJ]);
                     G += (int)(colors[i, j].G * mask[maskI, maskJ]);
                     B += (int)(colors[i, j].B * mask[maskI, maskJ]);
@@ -146,12 +164,21 @@ namespace paint_project
                 }
                 maskI++;
             }
+            //we have to make sure, if we're not out of range
+            //for values smaller than 0 set 0 , for value bigger than 255 set 255
+            //otherwise leave it as it is, % notation wouldn't work ex. 256%255 == 1
             R = R < 0 ? 0 : R > 255 ? 255 : R;
             G = G < 0 ? 0 : G > 255 ? 255 : G;
             B = B < 0 ? 0 : B > 255 ? 255 : B;
             return Color.FromArgb(R, G, B);
         }
 
+        /// <summary>
+        ///     Returns colors of the mask with alpha values,
+        ///     it's made to not use bitmap but array of colors
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
         private static Color[,] getColors(Bitmap bitmap)
         {
             Color[,] colors = new Color[bitmap.Width, bitmap.Height];
@@ -181,6 +208,13 @@ namespace paint_project
             return newBitmap;
         }
 
+        /// <summary>
+        ///  Returns median value of colors in 3x3 mask
+        /// </summary>
+        /// <param name="x">x coordinte of pixel</param>
+        /// <param name="y">y coordinate of pixel</param>
+        /// <param name="colors">Colors array</param>
+        /// <returns></returns>
         private static Color GetColorValueMedian(int x, int y, Color[,] colors)
         {
             int[] reds = new int[9];
@@ -203,20 +237,20 @@ namespace paint_project
             return Color.FromArgb(reds[5], greens[5], blues[5]);
         }
 
-        public static Bitmap SobelFilter(Bitmap bitmap, SobelFilterVariantEnum x)
+        /// <summary>
+        ///     Detecs edges - when there is sudden change of colors, we can have X, Y, and XY wariant, which means 
+        ///     there will be other masksW
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static Bitmap SobelFilter(Bitmap bitmap)
         {
             var colors = getColors(bitmap);
             Bitmap newBitmap = new Bitmap(bitmap);
             double[,] mask = null;
-            if (x == SobelFilterVariantEnum.XY)
-            {
-                mask = GetSobelMask(SobelFilterVariantEnum.X);
-            }
-            else
-            {
-                mask = GetSobelMask(x);
-            }
 
+            mask = GetSobelMask(SobelFilterVariantEnum.X);
             for (int i = 1; i < bitmap.Width - 1; i++)
             {
                 for (int j = 1; j < bitmap.Height - 1; j++)
@@ -224,17 +258,15 @@ namespace paint_project
                     newBitmap.SetPixel(i, j, GetColorValueLinear(i, j, mask, colors));
                 }
             }
-            if (x == SobelFilterVariantEnum.XY)
+
+            colors = getColors(newBitmap);
+            newBitmap = new Bitmap(newBitmap);
+            mask = GetSobelMask(SobelFilterVariantEnum.Y);
+            for (int i = 1; i < bitmap.Width - 1; i++)
             {
-                colors = getColors(newBitmap);
-                newBitmap = new Bitmap(newBitmap);
-                mask = GetSobelMask(SobelFilterVariantEnum.Y);
-                for (int i = 1; i < bitmap.Width - 1; i++)
+                for (int j = 1; j < bitmap.Height - 1; j++)
                 {
-                    for (int j = 1; j < bitmap.Height - 1; j++)
-                    {
-                        newBitmap.SetPixel(i, j, GetColorValueLinear(i, j, mask, colors));
-                    }
+                    newBitmap.SetPixel(i, j, GetColorValueLinear(i, j, mask, colors));
                 }
             }
             return newBitmap;
