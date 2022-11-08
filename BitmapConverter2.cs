@@ -112,6 +112,12 @@ namespace paint_project
 
         }
 
+        /// <summary>
+        ///     Avarage filter, the technic that is used to ensure filter is not going 
+        ///     to be on empty pixels is to use pixels but without one on the frame
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
         public static Bitmap AverageFilter(Bitmap bitmap)
         {
             double[,] mask = new double[3, 3];
@@ -272,6 +278,13 @@ namespace paint_project
             return newBitmap;
         }
 
+        /// <summary>
+        ///     Makes image sharper, if the image is brighter than the others it gets boosted
+        ///     high frequency components gets through. filters always sum up to 1, and these one
+        ///     is also like that
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
         internal static Bitmap HighPassFilter(Bitmap bitmap)
         {
             double[,] mask = new double[3, 3];
@@ -299,6 +312,12 @@ namespace paint_project
             return newBitmap;
         }
 
+        /// <summary>
+        ///     Complete oposite, pixel that is bright is going to have less value, 
+        ///     pixel that are not that significant are not going to change significantly
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
         public static Bitmap GausianFilter(Bitmap bitmap)
         {
             double[,] mask = new double[3, 3];
