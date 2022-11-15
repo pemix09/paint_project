@@ -70,6 +70,20 @@ namespace zad1___paint
             }
         }
 
+        private void LaunchHistogram(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Histogram histogram = new Histogram();
+                histogram.Show();
+            }
+            catch(Exception ex)
+            {
+                ErrorDisplay error = new ErrorDisplay(ex.Message);
+                error.Show();
+            }
+        }
+
 
         private void LoadImage(object sender, RoutedEventArgs e)
         {
