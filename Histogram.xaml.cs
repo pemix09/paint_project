@@ -132,7 +132,7 @@ namespace paint_project
             byte value;
             if (!byte.TryParse(TreshholdValue.Text, out value))
             {
-                MessageBox.Show("Niepoprawna wartość. Podaj wartość od 0 do 255");
+                MessageBox.Show("Wrong value, can range from 0 to 255");
                 TreshholdValue.Text = "0";
                 return;
             }
@@ -146,7 +146,7 @@ namespace paint_project
             byte value;
             if (!byte.TryParse(TreshholdPercent.Text, out value) || value > 100)
             {
-                MessageBox.Show("Niepoprawna wartość. Podaj wartość od 0 do 100");
+                MessageBox.Show("Wrong value, can range from 0 to 100");
                 TreshholdPercent.Text = "0";
                 return;
             }
