@@ -70,6 +70,20 @@ namespace zad1___paint
             }
         }
 
+        private void LaunchBezier(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Bezier bezier = new Bezier();
+                bezier.Show();
+            }
+            catch (Exception ex)
+            {
+                ErrorDisplay error = new ErrorDisplay(ex.Message);
+                error.Show();
+            }
+        }
+
 
         private void LoadImage(object sender, RoutedEventArgs e)
         {
