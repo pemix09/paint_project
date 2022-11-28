@@ -160,7 +160,7 @@ namespace paint_project
             double x, y;
             if (!double.TryParse(X.Text, out x) || !double.TryParse(Y.Text, out y))
             {
-                MessageBox.Show("Podaj poprawne wartośći", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Incorrect values", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (selectedAction != ActionEnum.MoveKeyboard)

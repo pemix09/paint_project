@@ -10,10 +10,10 @@ namespace paint_project
     {
         public readonly static Dictionary<ActionEnum, string> ActionTypesDictionary = new()
         {
-            { ActionEnum.NoAction, "Brak" },
-            { ActionEnum.DrawPoints, "Rysuj punkty" },
-            { ActionEnum.MoveMouse, "Przesuwanie myszą" },
-            { ActionEnum.MoveKeyboard, "Przesuwanie \npolem tekstowym" },
+            { ActionEnum.NoAction, "No action" },
+            { ActionEnum.DrawPoints, "Draw points" },
+            { ActionEnum.MoveMouse, "Move with mouse" },
+            { ActionEnum.MoveKeyboard, "Move with text field" },
         };
     }
 }
