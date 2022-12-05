@@ -84,6 +84,20 @@ namespace zad1___paint
             }
         }
 
+        private void LaunchMorfological(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var morfological = new MorphorogicalFilters();
+                morfological.Show();
+            }
+            catch (Exception ex)
+            {
+                ErrorDisplay error = new ErrorDisplay(ex.Message);
+                error.Show();
+            }
+        }
+
 
         private void LoadImage(object sender, RoutedEventArgs e)
         {
