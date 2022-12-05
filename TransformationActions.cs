@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace paint_project
 {
-    public enum ActionEnum
+    enum TransformationActions
     {
         NoAction,
-        DrawPoints,
-        MoveMouse,
+        Draw,
+        MouseMove,
         MoveKeyboard,
+        Rotate,
+        Scale
     }
 }

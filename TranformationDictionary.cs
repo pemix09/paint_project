@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace paint_project
 {
-
-    static class TranformationActions
+    static class TranformationDictionary
     {
         public readonly static Dictionary<TransformationActions, string> ActionTypesDictionary = new()
         {
